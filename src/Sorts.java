@@ -4,6 +4,7 @@
  */
 
 //Provided imports, feel free to use these if needed
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.ArrayList;
 
@@ -20,6 +21,7 @@ public class Sorts {
             list[j + 1] = temp;
         }
     }
+
 
     /**
      * This method performs merge sort on the input arraylist
@@ -76,15 +78,36 @@ public class Sorts {
         }
     }
 
-    // TODO
-    public void QuickSort(ArrayList<Integer> list, int start, int end) {
-        // TODO
+    public static void QuickSort(int[] list, int start, int end) {
+        if (start < end) {
+            int pivotIndex = partition(list, start, end);
+            QuickSort(list, start, pivotIndex -1);
+            QuickSort(list, pivotIndex + 1, end);
+        }
     }
 
-    // TODO
-    private int partition(ArrayList<Integer> arr, int l, int h) {
-        // TODO
-        return 0;
+
+    public static int partition(int[] arr, int l, int h) {
+        int pivotIndex = (l + h) / 2;
+        int pivotValue = arr[pivotIndex];
+        // Move pivot to the end of the array
+        int temp = arr[pivotIndex];
+        arr[pivotIndex] = arr[h];
+        arr[h] = temp;
+        int i = l;
+        for (int j = l; j < h; j++) {
+            if (arr[j] < pivotValue) {
+                temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
+                i++;
+            }
+        }
+        // Move pivot to its final position
+        temp = arr[i];
+        arr[i] = arr[h];
+        arr[h] = temp;
+        return i;
     }
 
     // TODO
@@ -125,8 +148,18 @@ public class Sorts {
     }
 
 
-    public ArrayList<Integer> countSort(ArrayList<Integer> list) {
-        // TODO
-        return new ArrayList<Integer>();
+    public static int[] countSort(int[] list) {
+        int max = Arrays.stream(list).max().orElse(0);
+        int[] counts = new int[max + 1]; // Initialize an array to count occurrences
+        for (int i = 0; i < list.length; i++) {
+            counts[list[i]]++; // Count occurrences
+        }
+        int index = 0;
+        for (int i = 0; i < counts.length; i++) {
+            for (int j = 0; j < counts[i]; j++) {
+                list[index++] = i; // Fill the array with the sorted values
+            }
+        }
+        return list;
     }
 }
