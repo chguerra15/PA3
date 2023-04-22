@@ -4,24 +4,22 @@
  */
 
 //Provided imports, feel free to use these if needed
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.ArrayList;
 
 public class Sorts {
 
-    public static void InsertionSort(int[] list, int start, int end) {
+    public static void insertionSort(ArrayList<Integer> list, int start, int end) {
         for (int i = start + 1; i <= end; i++) {
-            int temp = list[i];
+            int key = list.get(i);
             int j = i - 1;
-            while (j >= start && list[j] > temp) {
-                list[j + 1] = list[j];
+            while (j >= start && list.get(j) > key) {
+                list.set(j + 1, list.get(j));
                 j--;
             }
-            list[j + 1] = temp;
+            list.set(j + 1, key);
         }
     }
-
 
     /**
      * This method performs merge sort on the input arraylist
@@ -78,7 +76,7 @@ public class Sorts {
         }
     }
 
-    public static void QuickSort(int[] list, int start, int end) {
+    public static void QuickSort(ArrayList<Integer> list, int start, int end) {
         if (start < end) {
             int pivotIndex = partition(list, start, end);
             QuickSort(list, start, pivotIndex -1);
@@ -87,32 +85,38 @@ public class Sorts {
     }
 
 
-    public static int partition(int[] arr, int l, int h) {
-        int pivotIndex = (l + h) / 2;
-        int pivotValue = arr[pivotIndex];
+    public static int partition(ArrayList<Integer> list, int start, int end) {
+        int pivotIndex = (start + end) / 2;
+        int pivotValue = list.get(pivotIndex);
         // Move pivot to the end of the array
-        int temp = arr[pivotIndex];
-        arr[pivotIndex] = arr[h];
-        arr[h] = temp;
-        int i = l;
-        for (int j = l; j < h; j++) {
-            if (arr[j] < pivotValue) {
-                temp = arr[i];
-                arr[i] = arr[j];
-                arr[j] = temp;
+        int temp = list.get(pivotIndex);
+        list.set(pivotIndex, list.get(end));
+        list.set(end, temp);
+        int i = start;
+        for (int j = start; j < end; j++) {
+            if (list.get(j) < pivotValue) {
+                temp = list.get(i);
+                list.set(i, list.get(j));
+                list.set(j, temp);
                 i++;
             }
         }
         // Move pivot to its final position
-        temp = arr[i];
-        arr[i] = arr[h];
-        arr[h] = temp;
+        temp = list.get(i);
+        list.set(i, list.get(end));
+        list.set(end, temp);
         return i;
     }
 
-    // TODO
-    public void Modified_QuickSort(ArrayList<Integer> list, int start, int end, int cutoff) {
-        // TODO
+
+    public static void Modified_QuickSort(ArrayList<Integer> list, int start, int end, int cutoff){
+        if (end - start + 1 <= cutoff) {
+            insertionSort(list, start, end);
+        } else {
+            int pivotIndex = partition(list, start, end);
+            Modified_QuickSort(list, start, pivotIndex - 1, cutoff);
+            Modified_QuickSort(list, pivotIndex + 1, end, cutoff);
+        }
     }
 
     /**
@@ -143,23 +147,40 @@ public class Sorts {
 
     // TODO
     public ArrayList<Integer> bucketSort(ArrayList<Integer> list) {
-        // TODO
-        return new ArrayList<Integer>();
+        int min = Collections.min(list);
+        int numBuckets = assignNumBuckets(list);
+        ArrayList<ArrayList<Integer>> buckets = new ArrayList<>(); // Loop assigns the number of buckets
+        for (int i = 0; i < numBuckets; i++) {
+            buckets.add(new ArrayList<>());
+        }
+        for (int data : list) {
+            int bucketIndex = assignBucketIndex(data, numBuckets, min);
+            buckets.get(bucketIndex).add(data);
+        }
+        for (ArrayList<Integer> bucket : buckets) { // Sorts each bucket using the insertion sort
+            insertionSort(bucket, 0, bucket.size() - 1);
+        }
+        ArrayList<Integer> sortedList = new ArrayList<>(); // Merge the sorted buckets back into the original list
+        for (ArrayList<Integer> bucket : buckets) {
+            sortedList.addAll(bucket);
+        }
+        return sortedList;
     }
 
 
-    public static int[] countSort(int[] list) {
-        int max = Arrays.stream(list).max().orElse(0);
-        int[] counts = new int[max + 1]; // Initialize an array to count occurrences
-        for (int i = 0; i < list.length; i++) {
-            counts[list[i]]++; // Count occurrences
+    public static ArrayList<Integer> countSort(ArrayList<Integer> list) {
+        int max = Collections.max(list);
+        int[] counts = new int[max + 1];
+        ArrayList<Integer> sortedList = new ArrayList<>();
+
+        for (int i = 0; i < list.size(); i++) {
+            counts[list.get(i)]++;
         }
-        int index = 0;
-        for (int i = 0; i < counts.length; i++) {
+        for (int i = 0; i <= max; i++) {
             for (int j = 0; j < counts[i]; j++) {
-                list[index++] = i; // Fill the array with the sorted values
+                sortedList.add(i);
             }
         }
-        return list;
+        return sortedList;
     }
 }
