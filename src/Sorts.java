@@ -6,7 +6,7 @@
 //Provided imports, feel free to use these if needed
 import java.util.Collections;
 import java.util.ArrayList;
-
+//Class sorts, contains many sorting methods
 public class Sorts {
 
     /**
