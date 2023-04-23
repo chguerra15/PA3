@@ -12,7 +12,7 @@ public class RuntimeAnalysis {
     private static final int NUM_RUN = 10;
     private static final int NUM_TEST = 5;
     private static final int MIN = 0;
-    private static final int MAX = 12800000;
+    private static final int MAX = 10000;
 
     /**
      * Returns an ArrayList of random numbers
@@ -190,10 +190,10 @@ public class RuntimeAnalysis {
     public static void main(String[] args) {
         int numData;
 
-        numData = 80000;
+        numData = NUM_DATA;
         for (int i = 0; i < NUM_TEST; i++) {
             ArrayList<Integer> data = randomNumbers(numData, MIN, MAX);
-            timeCountSort(data, NUM_RUN);
+            timeMergeSort(data, NUM_RUN);
             numData += numData;
         }
 
