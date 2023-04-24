@@ -1,0 +1,13 @@
+<component name="ProjectCodeStyleConfiguration">
+  <code_scheme name="Project" version="173">
+    <codeStyleSettings language="JAVA">
+      <option name="RIGHT_MARGIN" value="99" />
+      <option name="KEEP_FIRST_COLUMN_COMMENT" value="false" />
+      <option name="WRAP_COMMENTS" value="true" />
+      <option name="WRAP_LONG_LINES" value="true" />
+    </codeStyleSettings>
+    <codeStyleSettings language="Markdown">
+      <option name="RIGHT_MARGIN" value="99" />
+    </codeStyleSettings>
+  </code_scheme>
+</component>
