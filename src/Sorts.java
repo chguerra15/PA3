@@ -16,7 +16,7 @@ public class Sorts {
      * @param start The initial index of the subsection we want to sort
      * @param end The final index of the subsection we want to sort
      */
-    public static void insertionSort(ArrayList<Integer> list, int start, int end) {
+    public void insertionSort(ArrayList<Integer> list, int start, int end) {
         for (int i = start + 1; i <= end; i++) {
             int key = list.get(i);
             int j = i - 1;
@@ -142,7 +142,7 @@ public class Sorts {
      * @param cutoff A set number to cut the array into
      * @return sorted list from the input
      */
-    public static void Modified_QuickSort(ArrayList<Integer> list, int start, int end, int cutoff){
+    public void Modified_QuickSort(ArrayList<Integer> list, int start, int end, int cutoff){
         if (end - start + 1 <= cutoff) {
             insertionSort(list, start, end);
         } else {
@@ -187,7 +187,6 @@ public class Sorts {
      * @return the sorted list from the input
      */
     public ArrayList<Integer> bucketSort(ArrayList<Integer> list) {
-        int min = Collections.min(list);
         int numBuckets = assignNumBuckets(list);
         ArrayList<ArrayList<Integer>> buckets = new ArrayList<>(); // Loop assigns the number
         // of buckets
@@ -195,11 +194,11 @@ public class Sorts {
             buckets.add(new ArrayList<>());
         }
         for (int data : list) {
-            int bucketIndex = assignBucketIndex(data, numBuckets, min);
+            int bucketIndex = assignBucketIndex(data, numBuckets, Collections.min(list));
             buckets.get(bucketIndex).add(data);
         }
         for (ArrayList<Integer> bucket : buckets) { // Sorts each bucket using the insertion sort
-            insertionSort(bucket, 0, bucket.size() - 1);
+            Collections.sort(bucket);
         }
         ArrayList<Integer> sortedList = new ArrayList<>(); // Merge the sorted buckets back into
         // the original list
@@ -215,7 +214,7 @@ public class Sorts {
      * @param list the input of the method, list to be sorted
      * @return returns the final sorted list
      */
-    public static ArrayList<Integer> countSort(ArrayList<Integer> list) {
+    public ArrayList<Integer> countSort(ArrayList<Integer> list) {
         //obtains the maximum value of the list
         int max = Collections.max(list);
         //creates an empty array from 0 to the the maximum value

@@ -4,15 +4,17 @@
  */
 
 import java.util.ArrayList;
-import java.util.Date;
 
+/**
+ * TODO: add class header
+ */
 public class RuntimeAnalysis {
 
     private static final int NUM_DATA = 10000;
     private static final int NUM_RUN = 10;
     private static final int NUM_TEST = 5;
     private static final int MIN = 0;
-    private static final int MAX = 10000;
+    private static final int MAX = 100000;
 
     /**
      * Returns an ArrayList of random numbers
@@ -57,7 +59,7 @@ public class RuntimeAnalysis {
         for (int i = 0; i < numRun; i++) {
             data = deepCopyArrayList(temp);
             startTime = System.currentTimeMillis();
-            Sorts.insertionSort(data, 0, data.size() - 1);
+            sorts.insertionSort(data, 0, data.size() - 1);
             endTime = System.currentTimeMillis();
             totalTime += (endTime - startTime);
         }
@@ -184,18 +186,16 @@ public class RuntimeAnalysis {
 
     /**
      * Main method to run the time methods. Modify it as you need.
-     * @param args arguments (not used)Cutoff Values = {2, 4, 8, 16, 32, 64, 128}
+     * @param args arguments (not used)
      */
-    //Dataset size = {100000, 200000, 300000, 400000, 500000, 600000}
     public static void main(String[] args) {
         int numData;
 
         numData = NUM_DATA;
         for (int i = 0; i < NUM_TEST; i++) {
             ArrayList<Integer> data = randomNumbers(numData, MIN, MAX);
-            timeMergeSort(data, NUM_RUN);
+            timeInsertionSort(data, NUM_RUN);
             numData += numData;
         }
-
     }
 }
