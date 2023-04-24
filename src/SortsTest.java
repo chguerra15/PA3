@@ -11,17 +11,17 @@ class SortsTest {
     void insertionSort() {
         ArrayList<Integer> list = new ArrayList<>(Arrays.asList(5, 2, 7, 3, 9, 1, 8));
         Sorts s = new Sorts();
-        s.insertionSort(list, 0, list.size() - 1);
+        s.InsertionSort(list, 0, list.size() - 1);
         assertEquals(Arrays.asList(1, 2, 3, 5, 7, 8, 9), list);
 
         ArrayList<Integer> list2 = new ArrayList<>(Arrays.asList(3, 5, 7, 2, 5));
         Sorts s2 = new Sorts();
-        s2.insertionSort(list2, 0, list2.size() - 1);
+        s2.InsertionSort(list2, 0, list2.size() - 1);
         assertEquals(Arrays.asList(2, 3, 5, 5, 7), list2);
 
         ArrayList<Integer> list3 = new ArrayList<>(Arrays.asList(3, 2, 1));
         Sorts s3 = new Sorts();
-        s3.insertionSort(list3, 0, list3.size() - 1);
+        s3.InsertionSort(list3, 0, list3.size() - 1);
         assertEquals(Arrays.asList(1, 2, 3), list3);
     }
 

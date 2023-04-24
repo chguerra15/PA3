@@ -16,7 +16,7 @@ public class Sorts {
      * @param start The initial index of the subsection we want to sort
      * @param end The final index of the subsection we want to sort
      */
-    public void insertionSort(ArrayList<Integer> list, int start, int end) {
+    public void InsertionSort(ArrayList<Integer> list, int start, int end) {
         for (int i = start + 1; i <= end; i++) {
             int key = list.get(i);
             int j = i - 1;
@@ -144,7 +144,7 @@ public class Sorts {
      */
     public void Modified_QuickSort(ArrayList<Integer> list, int start, int end, int cutoff){
         if (end - start + 1 <= cutoff) {
-            insertionSort(list, start, end);
+            InsertionSort(list, start, end);
         } else {
             //Recursive call to calculate each unsorted array
             int pivotIndex = partition(list, start, end);

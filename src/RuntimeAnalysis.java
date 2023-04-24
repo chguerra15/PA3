@@ -6,7 +6,7 @@
 import java.util.ArrayList;
 
 /**
- * TODO: add class header
+ * Class that calculate run times for each sort method
  */
 public class RuntimeAnalysis {
 
@@ -59,7 +59,7 @@ public class RuntimeAnalysis {
         for (int i = 0; i < numRun; i++) {
             data = deepCopyArrayList(temp);
             startTime = System.currentTimeMillis();
-            sorts.insertionSort(data, 0, data.size() - 1);
+            sorts.InsertionSort(data, 0, data.size() - 1);
             endTime = System.currentTimeMillis();
             totalTime += (endTime - startTime);
         }
