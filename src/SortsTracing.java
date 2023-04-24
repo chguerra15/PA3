@@ -117,7 +117,8 @@ public class SortsTracing {
         ArrayList<int[]> answer = new ArrayList<int[]>();
         //[1, 9, 6, 0, 4]
         answer.add(new int[]{0,1,6,9,4}); //Pivot at index one from unsorted array
-        answer.add(new int[]{0,1,4,6,9});//Pivot index one (6) from unsorted array, sorts the entire array
+        answer.add(new int[]{0,1,4,6,9});//Pivot index one (6) from unsorted
+        // array, sorts the entire array
         return answer;
     }
 

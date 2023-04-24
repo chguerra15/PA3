@@ -84,14 +84,17 @@ class SortsTest {
         ArrayList<Integer> actualOutput = s.bucketSort(input);
         assertEquals(expectedOutput, actualOutput);
 
-        ArrayList<Integer> input1 = new ArrayList<Integer>(Arrays.asList(7, 5, 3, 1, 9, 8, 2, 4, 6));
-        ArrayList<Integer> expectedOutput1 = new ArrayList<Integer>(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9));
+        ArrayList<Integer> input1 = new ArrayList<Integer>(Arrays.asList(7, 5, 3, 1, 9, 8, 2, 4,
+                6));
+        ArrayList<Integer> expectedOutput1 = new ArrayList<Integer>(Arrays.asList(1, 2, 3, 4, 5,
+                6, 7, 8, 9));
         Sorts s1 = new Sorts();
         ArrayList<Integer> actualOutput1 = s1.bucketSort(input1);
         assertEquals(expectedOutput1, actualOutput1);
 
         ArrayList<Integer> input2 = new ArrayList<Integer>(Arrays.asList(1,4,5,6,2,4));
-        ArrayList<Integer> expectedOutput2 = new ArrayList<Integer>(Arrays.asList(1, 2, 4, 4, 5, 6));
+        ArrayList<Integer> expectedOutput2 = new ArrayList<Integer>(Arrays.asList(1, 2, 4, 4, 5,
+                6));
         Sorts s2 = new Sorts();
         ArrayList<Integer> actualOutput2 = s2.bucketSort(input2);
         assertEquals(expectedOutput2, actualOutput2);

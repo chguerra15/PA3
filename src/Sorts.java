@@ -180,7 +180,8 @@ public class Sorts {
     }
 
     /**
-     * This Method is one of the sorting methods for a list, separates a sequence by allocating them
+     * This Method is one of the sorting methods for a list, separates a sequence by allocating
+     * them
      * in a specific number of buckets and applies Insertion Sorts to those unsorted sequences
      * @param list the input list to bucket sort
      * @return the sorted list from the input
@@ -188,7 +189,8 @@ public class Sorts {
     public ArrayList<Integer> bucketSort(ArrayList<Integer> list) {
         int min = Collections.min(list);
         int numBuckets = assignNumBuckets(list);
-        ArrayList<ArrayList<Integer>> buckets = new ArrayList<>(); // Loop assigns the number of buckets
+        ArrayList<ArrayList<Integer>> buckets = new ArrayList<>(); // Loop assigns the number
+        // of buckets
         for (int i = 0; i < numBuckets; i++) {
             buckets.add(new ArrayList<>());
         }
@@ -199,7 +201,8 @@ public class Sorts {
         for (ArrayList<Integer> bucket : buckets) { // Sorts each bucket using the insertion sort
             insertionSort(bucket, 0, bucket.size() - 1);
         }
-        ArrayList<Integer> sortedList = new ArrayList<>(); // Merge the sorted buckets back into the original list
+        ArrayList<Integer> sortedList = new ArrayList<>(); // Merge the sorted buckets back into
+        // the original list
         for (ArrayList<Integer> bucket : buckets) {
             sortedList.addAll(bucket);
         }
