@@ -97,7 +97,7 @@ class SortsTest {
 
         ArrayList<Integer> list3 = new ArrayList<>(Arrays.asList(3, 2, 1));
         Sorts s3 = new Sorts();
-        list3 = s.countSort(list3);
+        list3 = s3.countSort(list3);
         assertEquals(Arrays.asList(1, 2, 3), list3);
     }
 }
